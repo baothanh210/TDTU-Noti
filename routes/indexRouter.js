@@ -145,7 +145,7 @@ router.get('/auth/google/callback',
             // Check in database if the student is there or not with googleId
             Student.find({googleId: studentProfile.id}, (err, data) => {
                 if (err) {
-                    return console.log(err)
+                    return console.log("Lỗi:" + err)
                 } else {
                 // If the student is there already --> go to index page
                     if (data.length != 0) {
