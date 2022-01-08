@@ -100,7 +100,7 @@ img {
 }
 
 .bg-img {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -1366,7 +1366,6 @@ only screen and (max-width: 767.98px) {
 }
 
 .author a:hover {
-    color: #dc4734;
     text-decoration: underline;
 }
 
@@ -1797,6 +1796,7 @@ only screen and (max-width: 767.98px) {
 
 .profile-banner-large {
     height: 370px;
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
