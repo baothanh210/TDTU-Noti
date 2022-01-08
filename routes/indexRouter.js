@@ -125,14 +125,14 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     callbackURL: process.env.GOOGLE_PATH
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
-        console.log(profile)
+        
         return done(null, studentProfile);
     }
 ));
 
 router.get('/auth/google',
 
-    passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.profile' ]}), 
+    passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email']}), 
    
 );
 
@@ -141,7 +141,8 @@ router.get('/auth/google/callback',
     function (req,res) {
         // Successful authentication, redirect success
         // Check if email is OK or not
-        console.log(studentProfile)
+        console.log('studentProfile',studentProfile)
+
         if (domainCheck(studentProfile.hd.value) == 1)
         {
 
