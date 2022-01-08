@@ -143,7 +143,7 @@ router.get('/auth/google/callback',
         // Check if email is OK or not
         console.log('studentProfile',studentProfile)
 
-        if (domainCheck(studentProfile.hd.value) == 1)
+        if (domainCheck(studentProfile.emails[0].value) == 1)
         {
 
             // Check in database if the student is there or not with googleId

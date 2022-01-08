@@ -6,7 +6,7 @@
  function domainCheck(email){
     var result = 0
     var domain = '@student.tdtu.edu.vn'
-    if(email.includes(domain,8)){
+    if(email.includes(domain, 8)){
         result = 1
     }
     return result
