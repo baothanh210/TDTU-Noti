@@ -129,6 +129,7 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
 ));
 
 router.get('/auth/google',
+    passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}), 
     passport.authenticate('google', {scope : ['profile', 'email']})
 );
 
