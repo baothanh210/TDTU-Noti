@@ -105,7 +105,7 @@ router.post("/index", loginValidator, (req, res) => {
 
 /********************************** GOOGLE AUTHENTICATION FOR STUDENTS **************************************/
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth').Strategy;
 
 var domainCheck = require('./validators/domainValidator')
 var keys = require('../config/key');

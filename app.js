@@ -17,7 +17,6 @@ const logoutRouter = require("./routes/logoutRouter");
 const mainRouter = require("./routes/mainRouter");
 const profileRouter = require("./routes/profileRouter");
 const userprofileRouter = require("./routes/userprofileRouter");
-
 const notiRouter = require("./routes/notiRouter");
 const listRouter = require("./routes/listRouter");
 
