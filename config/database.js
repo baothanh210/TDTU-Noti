@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 // Connect to MongoDB database
 // var url = "mongodb://localhost:27017/TDTU_Noti";
-var url ="mongodb+srv://dbTDTU:dbTDTU@cluster0.ac9it.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var url ="mongodb+srv://dbTDTU:dbTDTU@cluster0.ac9it.mongodb.net/TDTU_Noti?retryWrites=true&w=majority";
 var db = mongoose.connect(url,
     {
         useNewUrlParser: true,
