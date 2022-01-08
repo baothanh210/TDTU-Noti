@@ -121,7 +121,7 @@ passport.deserializeUser(function(obj, cb) {
 
 passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     clientSecret: keys.googleClientSecret,
-                                    callbackURL: process.env.GOOGLE_PATH,
+                                    callbackURL: process.env.GOOGLE_PATH
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
         return done(null, studentProfile);
