@@ -136,6 +136,8 @@ router.get('/auth/google',
 router.get('/auth/google/callback', 
     passport.authenticate('google', { failureRedirect: '/' }),
     function (req,res) {
+        res.send(studentProfile)
+
         // Successful authentication, redirect success
         // Check if email is OK or not
 
