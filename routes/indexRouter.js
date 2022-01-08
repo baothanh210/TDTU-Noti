@@ -124,20 +124,17 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     callbackURL: process.env.GOOGLE_PATH
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
-        // return done(null, studentProfile);
-        return studentProfile;
+        return done(null, studentProfile);
     }
 ));
 
 router.get('/auth/google',
-    passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login', 'profile', 'email' ]}), 
+    passport.authenticate('google', {scope: ['profile', 'email' ]}), 
 );
 
 router.get('/auth/google/callback', 
     passport.authenticate('google', { failureRedirect: '/' }),
     function (req,res) {
-        res.send(studentProfile)
-
         // Successful authentication, redirect success
         // Check if email is OK or not
 
