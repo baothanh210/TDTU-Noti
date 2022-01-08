@@ -253,7 +253,7 @@
                                                         <% if(row._id == userId){ %>
                                                             <h6 class="author"><a href="/profile"><%= row.name %></a></h6>
                                                         <% } else { %>
-                                                            <h6 class="author"><a href="/0<% row._id %>"><%= row.name %></a></h6>
+                                                            <h6 class="author"><a href="/<%= '0' + row.googleId %>"><%= row.name %></a></h6>
                                                         <% } %>
                                                     </div>
                                                 </div>
@@ -277,7 +277,7 @@
                                                         <% if(row._id == userId){ %>
                                                             <h6 class="author"><a href="/profile"><%= row.name %></a></h6>
                                                         <% } else { %>
-                                                            <h6 class="author"><a href="/1<% row._id %>"><%= row.name %></a></h6>
+                                                            <h6 class="author"><a href="/<%= '1' + row._id %>"><%= row.name %></a></h6>
                                                         <% } %>
                                                     </div>
                                                 </div>
@@ -301,7 +301,7 @@
                                                             <% if(row._id == userId){ %>
                                                                 <h6 class="author"><a href="/profile"><%= row.name %></a></h6>
                                                             <% } else { %>
-                                                                <h6 class="author"><a href="/1<% row._id %>"><%= row.name %></a></h6>
+                                                                <h6 class="author"><a href="/<%= '1' + row._id %>"><%= row.name %></a></h6>
                                                             <% } %>
                                                         </div>
                                                     </div>
