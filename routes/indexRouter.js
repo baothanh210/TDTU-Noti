@@ -105,7 +105,7 @@ router.post("/index", loginValidator, (req, res) => {
 
 /********************************** GOOGLE AUTHENTICATION FOR STUDENTS **************************************/
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 var domainCheck = require('./validators/domainValidator')
 var keys = require('../config/key');
@@ -124,13 +124,13 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     callbackURL: process.env.GOOGLE_PATH
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
-        return done(null, studentProfile);
+        // return done(null, studentProfile);
+        return studentProfile;
     }
 ));
 
 router.get('/auth/google',
-    // passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}), 
-    passport.authenticate('google', {scope : 'openid'})
+    passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login', ]}), 
 );
 
 router.get('/auth/google/callback', 
