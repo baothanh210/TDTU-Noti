@@ -131,7 +131,8 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
 ));
 
 router.get('/auth/google',
-    passport.authenticate('google', {scope: ['profile', 'email' ]}), 
+
+    passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/userinfo.profile' ]}), 
    
 );
 
@@ -140,6 +141,7 @@ router.get('/auth/google/callback',
     function (req,res) {
         // Successful authentication, redirect success
         // Check if email is OK or not
+        console.log(studentProfile)
         if (domainCheck(studentProfile.hd.value) == 1)
         {
 
