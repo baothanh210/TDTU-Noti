@@ -121,7 +121,7 @@ passport.deserializeUser(function(obj, cb) {
 
 passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     clientSecret: keys.googleClientSecret,
-                                    callbackURL: process.env.GOOGLE_PATH,
+                                    callbackURL: 'https://tdtu-noti.herokuapp.com/auth/google/callback',
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
         return done(null, studentProfile);
