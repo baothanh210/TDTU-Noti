@@ -130,7 +130,7 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
 
 router.get('/auth/google',
     // passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}), 
-    passport.authenticate('google', {scope : ['profile', 'email']})
+    passport.authenticate('google', {scope : 'openid'})
 );
 
 router.get('/auth/google/callback', 
