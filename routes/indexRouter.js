@@ -105,7 +105,7 @@ router.post("/index", loginValidator, (req, res) => {
 
 /********************************** GOOGLE AUTHENTICATION FOR STUDENTS **************************************/
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth2').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 var domainCheck = require('./validators/domainValidator')
 var keys = require('../config/key');
@@ -124,6 +124,7 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
                                     callbackURL: process.env.GOOGLE_PATH
     }, function(accessToken, refreshToken, profile, done) {
         studentProfile = profile;
+        console.log(profile)
         return done(null, studentProfile);
     }
 ));
