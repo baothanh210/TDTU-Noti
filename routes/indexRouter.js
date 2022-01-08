@@ -130,7 +130,8 @@ passport.use( new GoogleStrategy ({ clientID: keys.googleClientID,
 
 router.get('/auth/google',
     passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}), 
-    passport.authenticate('google', {scope : ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']})
+    passport.authenticate('google', {scope : ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']}),
+    console.log(studentProfile)
 );
 
 router.get('/auth/google/callback', 
@@ -138,8 +139,8 @@ router.get('/auth/google/callback',
     function (req,res) {
         // Successful authentication, redirect success
         // Check if email is OK or not
-        // if (domainCheck(studentProfile.emails[0].value) == 1)
-        // {
+        if (domainCheck(studentProfile.emails[0].value) == 1)
+        {
             // Check in database if the student is there or not with googleId
             Student.find({googleId: studentProfile.id}, (err, data) => {
                 if (err) {
@@ -175,7 +176,7 @@ router.get('/auth/google/callback',
                     }
                 }
             });
-        // }   
+        }   
 });
 
 module.exports = router;
