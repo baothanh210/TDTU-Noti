@@ -1,0 +1,486 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><%= user.name %></title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="public/images/favicon.ico">
+
+    <!-- CSS ============================================ -->
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.9/plyr.min.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-nice-select@1.1.0/css/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.3/css/perfect-scrollbar.min.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="public/stylesheets/plugins/lightgallery.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="public/stylesheets/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="public/stylesheets/vendor/flaticon.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="public/stylesheets/style.css">
+    <!-- Video Player CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/2.0.15/plyr.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.css">
+
+    <!-- Video Player JS -->
+    <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.12/plyr.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky  d-none d-lg-block header-color">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <div class="brand-logo">
+                                            <a href="/main">
+                                                <img src="public/images/logo/logo.png" alt="brand logo"/>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="/main">Trang chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="/noti">Thông báo</a>
+                                    </li>
+                                    <li>
+                                        <a href="/list">Danh sách</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-5">
+                        <div class="header-top-center d-flex align-items-center justify-content-end">
+                            <!-- header top search start -->
+                            <div class="header-top-search">
+                                <form class="top-search-box">
+                                    <input type="text" placeholder="Search" class="top-search-field"/>
+                                    <button class="top-search-btn"><i class="flaticon-search"></i> </button>
+                                </form>
+                            </div>
+
+                            <div class="profile-setting-box">
+
+                                <div class="profile-thumb-small">
+                                        <a href="javascript:void(0)" class="profile-triger">
+                                        <figure><img src="<%= user.avatar %>" alt="profile picture"/></figure>
+                                    </a>
+
+                                    <div class="profile-dropdown">
+                                        <div class="profile-head">
+                                            <h5 class="name">
+                                                <a href="/profile"><%= user.name %></a>
+                                            </h5>
+                                            <a class="mail" href="#"
+                                                ><%= user.email %></a
+                                            >
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li>
+                                                    <a href="/profile"><i class="flaticon-user"></i>My Profile</a>
+                                                </li>
+                                                <% if (user.role == 'admin') { %>
+                                                    <li>
+                                                        <a href="/register"><i class="flaticon-settings"></i>Create F/D Account</a>
+                                                    </li>
+                                                <% } else { %>
+                                                    <li>
+                                                        <a href="/register"><i class="flaticon-users"></i>Edit Profile</a>
+                                                    </li>
+                                                    <% } %>
+                                                <li>
+                                                    <a href="/logout"><i class="flaticon-unlock"></i>Sign out</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a><b> &nbsp;<%= user.name %></b></a>
+                            <!-- profile picture end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <!-- header area for mobile start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none header-top-navigation">
+            <div class="mobile-header position-relative">
+                <div class="mobile-logo">
+                    <a href="/main">
+                        <img src="public/images/logo/logo.png" alt="logo" />
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+                        <li><a href="/main">Trang chủ</a></li>
+                        <li><a href="/noti">Thông báo</a></li>
+                        <li><a href="/list">Danh sách</a></li>
+                    </ul>
+                </div>
+                <!-- profile picture start -->
+
+                <div class="mobile-header-profile">
+                    <div class="profile-setting-box">
+                        <div class="profile-thumb-small">
+
+                            <a href="javascript:void(0)" class="profile-triger" >
+                                <figure>
+                                    <img src="<%= user.avatar %>" alt="profile picture"/>
+                                </figure>
+                            </a>
+
+                            <div class="profile-dropdown">
+                                <div class="profile-head">
+                                    <h5 class="name">
+                                        <a href="/profile"><%= user.name %></a>
+                                    </h5>
+                                    <a class="mail" href="#"><%= user.email %></a>
+                                </div>
+                                <div class="profile-body">
+                                    <ul>
+                                        <% if (user.role == 'admin') { %>
+                                            <li>
+                                                <a href="/register"><i class="flaticon-settings"></i>Create F/D Account</a>
+                                            </li>
+                                        <% } else { %>
+                                            <li>
+                                                <a href="/register"><i class="flaticon-users"></i>Edit Profile</a>
+                                            </li>
+                                            <% } %>
+                                        <li>
+                                            <a href="/logout"><i class="flaticon-unlock"></i>Sign out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area for mobile end -->
+
+    <main>
+
+        <div class="main-wrapper">
+            <div class="profile-banner-large bg-img" data-bg="public/images/banner/profile-banner.jpg"></div>
+            <!-- profile header start -->
+                <div class="profile-menu-area bg-white">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-3">
+                                <div class="profile-picture-box">
+                                    <figure class="profile-picture">
+                                        <a href="/profile">
+                                            <img src="<%= user.avatar %>" alt="profile picture" style="width: 200px; height: 200px">
+                                        </a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- profile header end -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 order-2 order-lg-1">
+                        <aside class="widget-area profile-sidebar">
+                            <br>
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <h4 class="widget-title"><%= user.name %></h4>
+                                <div class="widget-body">
+                                    <!-- <div class="about-author">
+                                        <p>I Don’t know how? But i believe that it is possible one day if i stay with my dream all time</p>
+                                        <ul class="author-into-list">
+                                            <li><a href="#"><i class="bi bi-office-bag"></i>Web Developer</a></li>
+                                            <li><a href="#"><i class="bi bi-home"></i>Melbourne, Australia</a></li>
+                                            <li><a href="#"><i class="bi bi-location-pointer"></i>Pulshar, Melbourne</a></li>
+                                            <li><a href="#"><i class="bi bi-heart-beat"></i>Travel, Swimming</a></li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+                        </aside>
+                    </div>
+
+                    <div class="col-lg-9 order-1 order-lg-2">
+                        <!-- Share box start -->
+                        <div class="card card-small">
+                            <div class="share-box-inner">
+
+                                <!-- profile picture end -->
+                                <div class="profile-thumb">
+                                    <a href="#">
+                                        <figure class="profile-thumb-middle">
+                                            <img src="<%= user.avatar %>" alt="profile picture"/>
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- profile picture end -->
+
+                                <!-- share content box start -->
+                                <div class="share-content-box w-100">
+                                    <form class="share-text-box">
+                                        <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something" data-bs-toggle="modal" data-bs-target="#textbox"></textarea>
+                                        <button class="btn-share">Share</button>
+                                    </form>
+                                </div>
+                                <!-- share content box end -->
+
+                                <!-- Modal start -->
+                                <div class="modal fade" id="textbox" aria-labelledby="textbox">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- F/D post -->
+                                            <% if(user.role == "F/D" || user.role == "admin"){ %>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Tạo thông báo</h5>
+                                                    <button type="button" id="close-button" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">X</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-user">
+                                                    <img style="border-radius: 50%; width: 40px;" src="<%= user.avatar %>" alt="profile picture"/>
+                                                    <h5 style="display: inline-block;" class="name">
+                                                        <a href="/profile"><%= user.name %></a>
+                                                    </h5>
+                                                </div>
+
+                                                <div class="modal-body custom-scroll">
+                                                    <form id="postForm" method="POST" enctype="multipart/form-data">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <!-- For title input -->
+                                                                <label for="imageUpload"><span>Tựa đề của thông báo</span></label>
+                                                                <br>
+                                                                <input maxlength="200" class="form-control" id="titleInput" type="text" name="title" placeholder="Title" style= "max-width: 100%" required>
+                                                            </div>
+
+                                                            <div class="col-lg-12">
+                                                                <!-- For content input -->
+                                                                <label for="imageUpload"><span>Nội dung của thông báo</span></label>
+                                                                <br>
+                                                                <textarea class="share-field-big custom-scroll" id="descInput" name="content" placeholder="Content" required></textarea>
+                                                            </div>
+                                            <!-- Student post -->
+                                            <% } else { %>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Tạo bài viết</h5>
+                                                    <button type="button" id="close-button" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">X</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-user">
+                                                    <img style="border-radius: 50%; width: 40px;" src="<%= user.avatar %>" alt="profile picture"/>
+                                                    <h5 style="display: inline-block;" class="name">
+                                                        <a href="/profile"><%= user.name %></a>
+                                                    </h5>
+                                                </div>
+
+                                                <div class="modal-body custom-scroll">
+                                                    <form id="postForm" method="POST" enctype="multipart/form-data">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <!-- For title input -->
+                                                                <label for="imageUpload"><span>Tựa đề của bài viết</span></label>
+                                                                <br>
+                                                                <input maxlength="200" class="form-control" id="titleInput" type="text" name="title" placeholder="Title" style= "max-width: 100%" required>
+                                                            </div>
+
+                                                            <div class="col-lg-12">
+                                                                <!-- For content input -->
+                                                                <label for="imageUpload"><span>Nội dung của bài viết</span></label>
+                                                                <br>
+                                                                <textarea class="share-field-big custom-scroll" id="descInput" name="content" placeholder="Content" required></textarea>
+                                                            </div>
+                                            <% } %>
+                                                            <div class="col-lg-12">
+                                                                <!-- For image upload -->
+                                                                <label for="imageUpload"><span>Tải hình ảnh</span></label>
+                                                                <br>
+                                                                <input type="file" id="imageUpload" name="postImage" accept="image/*"/>
+                                                            </div>
+
+                                                            <div class="col-lg-12">
+                                                                <!-- For Youtube url input -->
+                                                                <label for="urlInput">
+                                                                    <span>Nhập link Youtube</span>
+                                                                </label>
+                                                                <input class="form-control" id="urlInput" type="url" name="urlYoutube"
+                                                                    placeholder="https://www.youtube.com/"
+                                                                    pattern="https://www.youtube.com/.*" size = "50">
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="post-share-btn" data-bs-dismiss="modal">Cancel</button>
+                                                                <button id="post-button" class="post-share-btn" type="submit" value="post">Post</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal end -->
+                            </div>
+                            <div class="container-icon-post">
+                                <div id="stream">
+                                    <img src="public/images/live-video2.png" alt="">
+                                      <span> Live Video</span>
+                                </div>
+                                <div id="feeling">
+                                    <img src="public/images/feeling-emoji.png" alt="">
+                                    <span> Feeling/Activity</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Share box end -->
+                        <div id="new-post"></div>
+                        <br>
+                        <% if (record.length > 0) { %>
+                            <% record.forEach(function(row) { %>
+
+                                <!-- post status start -->
+                                <div class="card" id="<%= row._id%>">
+                                    <!-- post title start -->
+                                    <div class="post-title d-flex align-items-center">
+                                        <!-- profile picture end -->
+                                        <div class="profile-thumb">
+                                            <a href="#">
+                                                <figure class="profile-thumb-middle">
+                                                    <img src="<%= user.avatar %>" alt="profile picture">
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- profile picture end -->
+
+                                        <div class="posted-author">
+                                            <h6 class="author"><a href="/profile"><%= user.name %></a></h6>
+                                            <span class="post-time"><%= row.createdAt.toLocaleString() %></span>
+                                        </div>
+
+                                        <div class="post-settings-bar">
+                                            <span></span>
+                                            <span></span>
+                                            <div class="post-settings arrow-shape">
+                                                <ul>
+                                                    <li><a id="editLink" value="<%= row._id%>">Edit Post</a></li>
+                                                    <li><a id="delLink" value="<%= row._id%>">Delete Post</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- post title end -->
+
+                                    <div class="post-content">
+                                        <% if(row.title) { %>
+                                            <h6 class="title"><%= row.title %></h6>
+                                        <% } %>
+                                        <% if(row.content) { %>
+                                            <p class="post-desc"><%= row.content %></p>
+                                        <% } %>
+
+                                        <% if(row.post_img) { %>
+                                        <div class="post-thumb-gallery img-gallery">
+                                            <div class="row g-0">
+                                                <div class="col-12">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="<%= row.post_img %>">
+                                                            <img src="<%= row.post_img %>" alt="post image">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+
+                                        <% if(row.url_youtube) { %>
+                                            <div id="plyr-youtube" data-type="youtube" data-video-id="<%= row.url_youtube %>"></div>
+
+                                            <!-- <div class="plyr__video-embed plyr-video">
+                                                <iframe src="https://www.youtube.com/embed/<%= row.url_youtube %>" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div> -->
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <!-- post status end -->
+                            <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS ============================================ -->
+    <script>
+        plyr.setup("#plyr-youtube");
+    </script>
+    <!-- Modernizer JS -->
+    <script src="public/javascripts/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.3/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="public/javascripts/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <!-- Main JS -->
+    <script src="public/javascripts/main.js"></script>
+    <!-- Ajax for posting without reload page -->
+    <script src="public/javascripts/post_ajax.js"></script>
+</body>
+
+</html>

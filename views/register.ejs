@@ -1,0 +1,186 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <% if(user.role == "admin") { %>
+    <title>Create F/D Account</title>
+    <% } else { %>
+    <title>Edit Profile</title>
+    <% } %>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="public/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.9/plyr.min.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-nice-select@1.1.0/css/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.3/css/perfect-scrollbar.min.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="public/stylesheets/plugins/lightgallery.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="public/stylesheets/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="public/stylesheets/vendor/flaticon.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="public/stylesheets/style.css">
+    
+</head>
+
+<body class="bg-transparent">
+
+    <main>
+        <div class="row g-0">
+            <div class="col-lg-6 order-2 order-lg-1">
+                <div class="timeline-bg-content bg-img" data-bg="public/images/timeline/timeline.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                <% if(user.role == "admin") { %>
+                <div class="signup-inner text-center">
+                    <h3 class="title">Create F/D Account</h3>
+                    <form class="signup-inner--form" method="post" action="/register">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="single-field" placeholder="Name" name="name"> 
+                            </div>
+                            <div class="col-12">
+                                <input type="email" class="single-field" placeholder="Email" name="email">
+                            </div>
+                            <div class="col-12">
+                                <input type="password" class="single-field" placeholder="Password" name="password"> 
+                            </div>
+                            <div class="col-md-12">
+                                <select placeholder="Chose faculty or department" multiple name="rights">
+                                    <option>Phòng CTHSSV</option>
+                                    <option>Phòng đào tạo</option>
+                                    <option>Khoa CNTT</option>
+                                    <option>Khoa MTCN</option>
+                                </select>
+                            </div>
+                            <!--Error alert-->
+                            <div class="col-12">
+                                <% if(error.length > 0) { %>
+                                  <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <%= error %>
+                                  </div>
+                                <% } %>
+                            </div>
+                            <!--End error alert-->
+                            <div class="col-12">
+                                <button type="submit" class="submit-btn">Create Account</button>
+                                <a href="/main"><button class="submit-btn" type="button">Cancel</button></a>
+                            </div>            
+                        </div>
+                    </form>
+                </div>
+            <% } else if (user.role == 0) { %>
+                <div class="signup-inner text-center">
+                    <h3 class="title">Edit Profile</h3>
+                    <form class="signup-inner--form" method="post" action="/updateProfile">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="single-field" placeholder="<%= user.name %>" name="name"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="single-field" placeholder="Class: <%= user.class %>" name="className"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="single-field" placeholder="Faculty: <%= user.faculty %>" name="faculty"> 
+                            </div>
+                            <!--Error alert-->
+                            <div class="col-12">
+                                <% if(error.length > 0) { %>
+                                  <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <%= error %>
+                                  </div>
+                                <% } %>
+                            </div>
+                            <!--End error alert-->
+                            <div class="col-12">
+                                <button type="submit" class="submit-btn">Update Profile</button>
+                                <a href="/main"><button class="submit-btn" type="button">Cancel</button></a>
+                            </div>            
+                        </div>
+                    </form>
+                </div>
+                <% } else if (user.role == "F/D"){ %>
+                    <div class="signup-inner text-center">
+                        <h3 class="title">Change Password</h3>
+                        <form class="signup-inner--form" method="post" action="/changePassword">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="password" class="single-field" placeholder="Old Password" name="old_pwd"> 
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="password" class="single-field" placeholder="New Password" name="new_pwd"> 
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="password" class="single-field" placeholder="Re-enter new password" name="renew_pwd"> 
+                                </div>
+                                <!--Error alert-->
+                                <div class="col-12">
+                                    <% if(error.length > 0) { %>
+                                      <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <%= error %>
+                                      </div>
+                                    <% } %>
+                                </div>
+                                <!--End error alert-->
+                                <div class="col-12">
+                                    <button type="submit" class="submit-btn">Change Password</button>
+                                    <a href="/main"><button class="submit-btn" type="button">Cancel</button></a>
+                                </div>            
+                            </div>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="public/javascripts/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.9/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.3/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="public/javascripts/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <!-- Main JS -->
+    <script src="public/javascripts/main.js"></script>
+
+</body>
+
+</html>
