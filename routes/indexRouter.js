@@ -138,6 +138,7 @@ router.get('/auth/google/callback',
     function (req,res) {
         // Successful authentication, redirect success
         // Check if email is OK or not
+        console.log(studentProfile);
         if (domainCheck(studentProfile.emails[0].value) == 1)
         {
             // Check in database if the student is there or not with googleId
